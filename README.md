@@ -1,5 +1,6 @@
-# Idiombeddings - a consituent-induced embeddings for idioms
+# Idiombeddings - a constituent-induced embeddings for idioms
 
+(WORK IN PROGRESS - this is a spin-off project from the Idiomify project. I will start working on this as soon as Idiomify is done)
 
 ## The Rationale
 
@@ -29,6 +30,28 @@ So, there is a huge room for improvement in figurative language processing, but 
 
 So, there is a huge room for improvement in figurative language processing, but where do we get the ideas for the improvement? We could take various approaches to this, but Shawatz & Dagan suggest (2019) what I think is arguably the most sensible approach:  “get some inspiration from the way that humans learn idioms”.  We at least have a working answer in the human brain, however elusive it may be, so it is sensible to at least try to replicate this  in machines rather than to invent a completely new solution from scratch. It works in the human brain, so  it may as well work in connectionsists language models ( layers of artifical neural networks).  And this, this is what I mean by SLA could suggest better biases to NLP. That is, we could improve the performance of such language models on processing idioms, specifically BERT for my dissertation, by drawing inspirations (i.e. biases) from how humans learn idioms.   
 
-What better biases have I found, then?  the Global Elaboration Hypothesis  posits (Levorato & Cacciari, 1995; karlson, 2019) that both L1 and L2 learners may start  learning idioms by first deducing the figurative meaning from the literal meaning, for those idioms that are yet to take place in their mental lexicon (vocabulary). It is not like they get the metaphor behing the literal interpretation right off the bat. However, as the learners age and contine learing those idioms, they gradually treat idioms as a single chunk and stop relying on analogies to get the figurative meaning. For example, when L2 learners of English encounter the idiom *throw the baby out with the bathwater* for the first time, their first reaction is to interpret the meaning literally, which they analogize with a given context to guess the figurative meaning, *to ignore potentially important things.* However, as they go along, the gradually stop imagining babies being thrown altogether with dirty water in their minds, and at the end, they don’t even think of babies when using *throw baby out with the bathwater* in its idioamtic sense - they  just use it as a single chunk at the end of their learning.
+<img width="983" alt="image" src="https://user-images.githubusercontent.com/56193069/163039639-edda4cdc-b4f1-4fee-9a3c-332eac9e29a7.png">
+
+What better biases have I found, then?  the Global Elaboration Hypothesis  posits (Levorato & Cacciari, 1995; karlson, 2019) that both L1 and L2 learners may start  learning idioms by first deducing the figurative meaning from the literal meaning, for those idioms that are yet to take place in their mental lexicon (vocabulary). It is not like they get the metaphor behind the literal interpretation right off the bat. However, as the learners age and contine learing those idioms, they gradually treat idioms as a single chunk and stop relying on analogies to get the figurative meaning. For example, when L2 learners of English encounter the idiom *throw the baby out with the bathwater* for the first time, their first reaction is to interpret the meaning literally, which they analogize with a given context to guess the figurative meaning, *to ignore potentially important things.* However, as they go along, the gradually stop imagining babies being thrown altogether with dirty water in their minds, and at the end, they don’t even think of babies when using *throw baby out with the bathwater* in its idioamtic sense - they  just use it as a single chunk at the end of their learning.
 
 If that’s how we go about learning idioms, that is, if humans use the literal interpretaion of idioms to “bootstrap” their understaning on the figurative meaning, so to speak, then there is nothing stopping us to expect that the bootstrapping bias as such may be useful for teaching idioms to language models.
+
+## Methods 
+
+<img width="930" alt="image" src="https://user-images.githubusercontent.com/56193069/163044641-de79dd48-8f30-43a2-989c-e00855b046d5.png">
+
+```python
+figurative_embedddings # (I, H) - this is stored in the embedding table
+literal_embeddings # (I, H) - you should somehow compute this, using as few weights as possible 
+# transparency is analogous to the similarities of two embeddings.
+# and dot product is one way of measuring the similarities of two embeddings 
+transps = torch.einsum("ih,ih->i",figurative_embeddings, literal_embeddings)
+transps = torch.sigmoid(transps)
+embeddings = transps * literal_embeddings + (1 - transps) * figurative_embeddings
+```
+
+- the  more similar `figurative_embeddings`  is to `literal_embeddings` , the greater `transp` gets , the  closer `embeddings`  will get to `literal_embeddings`.
+- the more different `figurative_embeddings`  is to `literal_embeddings`,  the less `tranps` gets, the closer `embeddings`  will get to `figurative_embeddings`.
+
+That is the inductive bias we could introduce to the model.
+
