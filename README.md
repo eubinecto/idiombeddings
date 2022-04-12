@@ -1,6 +1,6 @@
 # Idiombeddings - a constituent-induced embeddings for idioms
 
-(WORK IN PROGRESS - this is a spin-off project from the Idiomify project. I will start working on this as soon as Idiomify is done)
+(WORK IN PROGRESS - this is a spin-off project from the [Idiomify](https://github.com/eubinecto/idiomify) project. Will start working on this as soon as Idiomify is done)
 
 ## The Rationale
 
