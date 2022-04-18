@@ -49,5 +49,6 @@ embeddings = transps * literal_embeddings + (1 - transps) * figurative_embedding
 - the  more similar `figurative_embeddings`  is to `literal_embeddings` , the greater `transp` gets , the  closer `embeddings`  will get to `literal_embeddings`.
 - the more different `figurative_embeddings`  is to `literal_embeddings`,  the less `tranps` gets, the closer `embeddings`  will get to `figurative_embeddings`.
 
-That is the inductive bias we could introduce to the model.
+That is the inductive bias we could introduce to the model. The sigmoid function behaves as a "gate", similar to how gates are used in LSTM.
+
 
