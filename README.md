@@ -4,7 +4,7 @@
 
 How did I end up with this project? |
 --- | 
-[<img align="left" src="https://user-images.githubusercontent.com/56193069/167523399-635f9632-c35b-417c-bd7a-c185be6a0e89.png" width="50%">](https://youtu.be/Qi7C2-nvkms "Killing two birds with a human-inspired Idiomifier") Click the thumbnail on the left to see a full introductory talk on this project. The video discusses (in Korean) what the field of NLP is about, what I believe is a big problem in the field, and my plan to suggestion a solution to the problem, which is this project.   |
+[<img align="left" src="https://user-images.githubusercontent.com/56193069/167523399-635f9632-c35b-417c-bd7a-c185be6a0e89.png" width="50%">](https://youtu.be/Qi7C2-nvkms "Killing two birds with a human-inspired Idiomifier") Click the thumbnail on the left to see a full introductory talk on this project. The video discusses (in Korean) what the field of NLP is about, what I believe is a big problem in the field, and my suggestion for a solution to the problem, which is this project.   |
 
 
 
