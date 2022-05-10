@@ -2,6 +2,12 @@
 
 (WORK IN PROGRESS - this is a spin-off project from the [Idiomify](https://github.com/eubinecto/idiomify) project. Will start working on this as soon as Idiomify is done)
 
+
+How did I end up with this project? |
+--- | 
+[<img src="https://user-images.githubusercontent.com/56193069/167523399-635f9632-c35b-417c-bd7a-c185be6a0e89.png" width="50%">](https://youtu.be/Qi7C2-nvkms "Killing two birds with a human-inspired Idiomifier")| 
+
+
 ## The Rationale
 
 I think we could improve machines in processing idioms if we draw inspirations from how humans go about learning idioms. That is, if we could introduce human-inspired inductived biases to language models, we may be able to improve their performance on figurative processing.
