@@ -19,10 +19,21 @@ I think we could improve machines in processing idioms if we draw inspirations f
 
 But first, why do we even need to have machines better understand idioms?  It is because, although a huge progress has been made within Natural Language Processing (NLP) in recent years, figurative processing has always been a “pain in the neck” in NLP, so to speak. Take BERT as an example. It is a connectionists language model that can be finetuned to fill-in-the-blanks (top left), answer a question (top right), summarize a pargraph (bottom left), analyse sentiments (bottom right), etc. These are by no means easy tasks to machines, but as you can see from the examples above, the performance of BERT on these colloquial tasks are quite impressive. 
 
+Idiomatic Inconsistencies in BERT |
+--- | 
+<img alt="image" src="https://user-images.githubusercontent.com/56193069/163038008-49cbe6ca-4c1e-4a23-8c84-0defcc2f0e49.png"> | 
 
-<img width="807" alt="image" src="https://user-images.githubusercontent.com/56193069/163038008-49cbe6ca-4c1e-4a23-8c84-0defcc2f0e49.png">
+However, when it comes to processing idioms, BERT is far from impressive. Without even getting into the literature, you can already see how replacing get ready (left) to wet my gills (right) substantially changes the predictions on fill-in-the-blanks task, although the two phrases essentially mean the same thing. Ideally, the probability distribution should stay more or less the same, but it doesn’t. 
 
-However, when it comes to processing idioms, BERT is far from impressive. Without even getting into the literature, you can already see how replacing get ready (left) to wet my gills (right) substantially changes the predictions on fill-in-the-blanks task, although the two phrases essentially mean the same thing. Ideally, the probability distribution should stay more or less the same, but it doesn’t. This is because, as with many other language models, BERT falls short at processing the figures of speech.
+Idiomatic Inconsistencies in [sentence BERT (all-MiniLM-L6-v2)](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) | 
+--- | 
+<img alt="image" src="https://user-images.githubusercontent.com/56193069/167526502-bcf92871-c9dc-449d-a65d-21cc24e726b2.png"> | 
+
+Not only does Vanilla BERT lack idiomatic fluency, the same problem persists in Sentence BERT as well. As illustrated above, the model does not regard "I am extremely happy" to be similar to "I am over the moon", although they are semantically the same sentence.
+
+
+From the two qualitative examples above, we can conjecture that, as with many other language models, BERT falls short at processing the figures of speech.
+
 
 <img width="791" alt="image" src="https://user-images.githubusercontent.com/56193069/163038079-e791691a-c46c-4356-aa6f-79eb6541f7a2.png">
 
